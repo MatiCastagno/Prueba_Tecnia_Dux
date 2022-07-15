@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulario</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body style="padding: 5px;">
+	<h1 style="text-align: center;">ORGANIZA TU PROPIO TORNEO DE TENIS!!</h1>
+	<form th:action="@{/createPartido}" method="POST">
+		<p th:if="${exito != null}" th:text="${exito}" style="color: red;"></p>
+		<div class="mb-3">
+			<label for="torneo" class="form-label">TORNEO :</label>
+			<input type="text" class="form-control" id="torneo"  name="torneo"
+				placeholder="Ingrese el nombre del torneo" pattern="^[a-zA-Z ]+$" required>
+		</div>
+		<div class="mb-3">
+			<label for="nombre" class="form-label">Jugador Uno :</label>
+			<input type="text" class="form-control" id="nombre" name="nombre1"
+				placeholder="Ingrese el nombre del jugador" pattern="^[a-zA-Z ]+$" required>
+		</div>
+		<div class="mb-3">
+			<label for="nombre2" class="form-label">Jugador Dos:</label>
+			<input type="text" class="form-control" id="nombre2" name="nombre2"
+				placeholder="Ingrese el nombre del jugador" pattern="^[a-zA-Z ]+$" required>
+		</div>
+		<div class="mb-3">
+			<label for="sets" class="form-label">Cantidad de Sets (3 o 5):</label>
+			<input type="text" class="form-control" id="sets" name="cant_sets"
+				placeholder="Ingrese la cantidad de sets a jugar" pattern="^[3 OR 5]+$" required>
+		</div>
+		<div class="mb-3">
+			<label for="probj1" class="form-label">Probabilidad para Jugador Uno:</label>
+			<input type="text" class="form-control" id="probj1" name="p_J1"
+				placeholder="1 - 100" pattern="^[0-9]+$" required>
+		</div>
+		<div class="mb-3">
+			<label for="probj2" class="form-label">Probabilidad para Jugador Dos:</label>
+			<input type="text" class="form-control" id="probj2" name="p_J2"
+				placeholder="1 - 100" pattern="^[0-9]+$" required>
+		</div>
+		<button type="submit" class="btn btn-primary">Guardar</button>
+	</form>
+	
+	<div class="mb-3" style="display: flex;
+	justify-content: center;
+	align-items: center;
+	 padding: 5px;">
+		<button class="btn btn-outline-primary"> <a style="color:black;" th:href="@{/arrancarPartido/__${id_partido}__}">ARRANCAR PARTIDO</a></button>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+		crossorigin="anonymous"></script>
+</body>
+</html>
